@@ -2,7 +2,7 @@
  * API utility for communicating with the Express backend proxy
  */
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = import.meta.env.VITE_API_URL;
 
 /**
  * Exchange OAuth authorization code for tokens
