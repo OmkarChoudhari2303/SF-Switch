@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { exchangeCodeForTokens, fetchUserInfo } from '../utils/api';
@@ -8,9 +8,13 @@ export default function OAuthCallback() {
   const [error, setError] = useState(null);
   const { setTokens, setUser } = useAuth();
   const navigate = useNavigate();
+  const hasProcessed = useRef(false);
 
   useEffect(() => {
     async function handleCallback() {
+      if (hasProcessed.current) return;
+      hasProcessed.current = true;
+
       try {
         const params = new URLSearchParams(window.location.search);
         const code = params.get('code');

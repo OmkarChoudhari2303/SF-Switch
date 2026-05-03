@@ -19,6 +19,7 @@ export default function LoginButton() {
     authUrl.searchParams.set('code_challenge', challenge);
     authUrl.searchParams.set('code_challenge_method', 'S256');
     authUrl.searchParams.set('scope', 'full refresh_token');
+    authUrl.searchParams.set('prompt', 'login'); // Forces the login screen to appear
 
     window.location.href = authUrl.toString();
   }
