@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://sf-switch.vercel.app"
+  "https://sf-switch.vercel.app",
+  "https://sf-switch-1.vercel.app"
 ];
 
 app.use(cors({
