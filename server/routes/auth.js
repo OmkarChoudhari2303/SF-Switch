@@ -27,6 +27,11 @@ router.post('/token', async (req, res) => {
       redirect_uri: redirectUri
     });
 
+    console.log('Sending token exchange request to Salesforce:', {
+      url: `${SF_LOGIN_URL}/services/oauth2/token`,
+      body: params.toString()
+    });
+
     const response = await fetch(`${SF_LOGIN_URL}/services/oauth2/token`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
